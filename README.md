@@ -7,6 +7,7 @@
 | ------------- |-----------------------------------|
 | 140810220069  | Rais Abiyyu Putra                 |
 | 140810220083  | Novem Romadhofi kika              |
+| 140810220062  | Drias Ameliano Kevin David        |
 
 ## Deskripsi Proyek
 
