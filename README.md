@@ -9,67 +9,61 @@
 | 140810220083  | Novem Romadhofi kika              |
 
 ## Deskripsi Proyek
-Proyek ini terdiri dari dua aplikasi yang saling terhubung untuk mengelola kontak rahasia menggunakan enkripsi. Enkripsi dilakukan dengan mengubah nomor telepon menjadi kode berbentuk segitiga. Berikut adalah alur kerja dua aplikasi yang digunakan:
 
-1. **Aplikasi Input Kontak (`input_contact.cpp`)**
-   - Bertugas untuk memasukkan nama dan nomor telepon.
-   - Mengenkripsi nomor telepon dengan metode Shift Cipher berdasarkan nama kontak.
-   - Menyimpan data nama, nomor asli, dan kode enkripsi berbentuk segitiga ke dalam file `encrypted_contacts.txt`.
-
-2. **Aplikasi Pencarian Kontak (`decrypt_display.cpp`)**
-   - Meminta input kode enkripsi dalam bentuk segitiga.
-   - Mencari kecocokan kode enkripsi segitiga di file `encrypted_contacts.txt`.
-   - Jika ditemukan, menampilkan nama dan nomor telepon asli.
+Aplikasi ini adalah sistem pengelolaan kontak rahasia berbasis web menggunakan Streamlit. Aplikasi ini memungkinkan Anda menyimpan, mencari, dan menghapus kontak dengan enkripsi berbentuk segitiga.
 
 ---
 
-## Alur Kerja Program
+## Fitur Utama
 
-### **1. Input Kontak (`input_contact.cpp`):**
-#### Langkah-langkah:
-1. **Masukkan Nama dan Nomor Telepon:**
-   - Pengguna diminta untuk memasukkan nama kontak dan nomor telepon.
-2. **Proses Enkripsi:**
-   - Nomor telepon dienkripsi menggunakan algoritma Shift Cipher dengan kunci yang dihitung dari nama kontak.
-   - Hasil enkripsi ditampilkan dalam bentuk segitiga.
-3. **Simpan Data:**
-   - Data nama, nomor telepon asli, dan kode enkripsi segitiga disimpan ke file `encrypted_contacts.txt` dengan format berikut:
+1. **Tambah Kontak**: Menyimpan nama dan nomor telepon yang dienkripsi dengan metode shift cipher.
+2. **Cari Kontak**: Mencari kontak berdasarkan kode enkripsi berbentuk segitiga.
+3. **Hapus Kontak**: Menghapus kontak berdasarkan nama yang diberikan.
+
+---
+
+## Cara Kerja
+
+1. **Enkripsi Kontak**:
+   - Setiap nomor telepon dienkripsi menggunakan shift cipher berdasarkan urutan alfabet dari nama kontak.
+   - Hasil enkripsi ditampilkan dalam format segitiga, misalnya:
      ```
-     Nama,Nomor Asli
-     Enkripsi Baris 1
-     Enkripsi Baris 2
-     ...
+     1
+     12
+     123
+     1234
+     12345
+     ```
+
+2. **Tambah Kontak**:
+   - Input nama dan nomor telepon.
+   - Data disimpan ke file `encrypted_contacts.txt` dalam format:
+     ```
+     Nama,Nomor
+     Kode Segitiga
      ---
      ```
+   - File tambahan `encrypted_triangle_<Nama>.txt` dibuat untuk unduhan.
 
-### **2. Pencarian Kontak (`decrypt_display.cpp`):**
-#### Langkah-langkah:
-1. **Masukkan Kode Enkripsi Segitiga:**
-   - Pengguna diminta memasukkan kode enkripsi dalam bentuk segitiga.
-   - Untuk mengakhiri input segitiga, pengguna harus mengetikkan `---`.
-2. **Cocokkan Data:**
-   - Program membaca file `encrypted_contacts.txt` dan membandingkan input dengan kode enkripsi segitiga yang disimpan.
-3. **Tampilkan Hasil:**
-   - Jika ditemukan, nama dan nomor telepon asli ditampilkan.
-   - Jika tidak ditemukan, program memberikan pesan bahwa kontak tidak ada.
+3. **Cari Kontak**:
+   - Masukkan kode enkripsi berbentuk segitiga.
+   - Sistem mencocokkan dengan data di file `encrypted_contacts.txt` dan menampilkan hasilnya jika ditemukan.
+
+4. **Hapus Kontak**:
+   - Masukkan nama kontak.
+   - Kontak dihapus dari file `encrypted_contacts.txt` jika ditemukan.
 
 ---
 
-## Catatan Penting
-- **Format Input Segitiga:** Saat memasukkan kode enkripsi segitiga, pastikan formatnya benar dan akhiri dengan `---` untuk menandakan akhir input.
-- **File Data:**
-  - Pastikan file `encrypted_contacts.txt` berada di direktori yang sama dengan aplikasi.
-  - Jangan menghapus atau mengubah isi file secara manual untuk menghindari kesalahan pencocokan data.
+## Menjalankan Aplikasi
 
----
-
-## Anggota
-- Nama: Rais Abiyyu Putra  
-  NPM: 140810220069
-- Nama: Novem Romadhofi Kika  
-  NPM: 140810220083
-
----
-
-Dikembangkan untuk memenuhi tugas mata kuliah Kriptografi. Jika ada pertanyaan, hubungi pengembang. 😊
+1. Instal Streamlit jika belum terinstal:
+   ```bash
+   pip install streamlit
+   ```
+2. Jalankan aplikasi dengan perintah:
+   ```bash
+   streamlit run app.py
+   ```
+3. Akses aplikasi melalui browser di alamat yang ditampilkan (biasanya `http://localhost:8501`).
 
