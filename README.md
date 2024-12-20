@@ -10,60 +10,83 @@
 
 ## Deskripsi Proyek
 
-Aplikasi ini adalah sistem pengelolaan kontak rahasia berbasis web menggunakan Streamlit. Aplikasi ini memungkinkan Anda menyimpan, mencari, dan menghapus kontak dengan enkripsi berbentuk segitiga.
+Aplikasi ini adalah sistem pengelolaan kontak rahasia berbasis web menggunakan Streamlit. Dengan aplikasi ini, Anda dapat menyimpan, mencari, dan menghapus kontak dengan metode enkripsi khusus untuk menjaga kerahasiaan data.
 
 ---
 
 ## Fitur Utama
 
-1. **Tambah Kontak**: Menyimpan nama dan nomor telepon yang dienkripsi dengan metode shift cipher.
-2. **Cari Kontak**: Mencari kontak berdasarkan kode enkripsi berbentuk segitiga.
-3. **Hapus Kontak**: Menghapus kontak berdasarkan nama yang diberikan.
+1. **Tambah Kontak**:
+   - Menyimpan nama dan nomor telepon dengan enkripsi berbasis shift cipher.
+   - Data enkripsi ditampilkan dalam format segitiga untuk keamanan tambahan.
+2. **Cari Kontak**:
+   - Memungkinkan pencarian kontak berdasarkan kode enkripsi segitiga.
+   - Menampilkan nama dan nomor telepon jika data cocok.
+3. **Hapus Kontak**:
+   - Menghapus kontak yang dipilih berdasarkan nama dari penyimpanan sistem.
 
 ---
 
 ## Cara Kerja
 
-1. **Enkripsi Kontak**:
-   - Setiap nomor telepon dienkripsi menggunakan shift cipher berdasarkan urutan alfabet dari nama kontak.
-   - Hasil enkripsi ditampilkan dalam format segitiga, misalnya:
-     ```
-     1
-     12
-     123
-     1234
-     12345
-     ```
+### 1. **Enkripsi Kontak**
+- Nomor telepon dienkripsi dengan metode **shift cipher**, di mana setiap digit angka digeser berdasarkan nilai alfabet dari nama kontak.
+- Hasil enkripsi disusun dalam format segitiga. Contoh:
+  ```
+  1
+  12
+  123
+  1234
+  12345
+  ```
+  Format ini menambahkan lapisan keamanan karena mempersulit interpretasi data langsung.
 
-2. **Tambah Kontak**:
-   - Input nama dan nomor telepon.
-   - Data disimpan ke file `encrypted_contacts.txt` dalam format:
+### 2. **Tambah Kontak**
+- Pengguna memasukkan nama dan nomor telepon melalui antarmuka aplikasi.
+- Sistem:
+  1. Mengenkripsi nomor telepon.
+  2. Menyimpan data ke file `encrypted_contacts.txt` dalam format:
      ```
      Nama,Nomor
      Kode Segitiga
      ---
      ```
-   - File tambahan `encrypted_triangle_<Nama>.txt` dibuat untuk unduhan.
+  3. Membuat file `encrypted_triangle_<Nama>.txt` sebagai berkas unduhan untuk setiap kontak.
 
-3. **Cari Kontak**:
-   - Masukkan kode enkripsi berbentuk segitiga.
-   - Sistem mencocokkan dengan data di file `encrypted_contacts.txt` dan menampilkan hasilnya jika ditemukan.
+### 3. **Cari Kontak**
+- Pengguna memasukkan kode segitiga hasil enkripsi.
+- Sistem membaca file `encrypted_contacts.txt` dan mencocokkan kode segitiga dengan data yang tersimpan.
+- Jika ditemukan, sistem menampilkan nama dan nomor telepon kontak tersebut.
 
-4. **Hapus Kontak**:
-   - Masukkan nama kontak.
-   - Kontak dihapus dari file `encrypted_contacts.txt` jika ditemukan.
+### 4. **Hapus Kontak**
+- Pengguna memasukkan nama kontak yang ingin dihapus.
+- Sistem:
+  1. Membaca file `encrypted_contacts.txt`.
+  2. Mencari nama yang cocok dan menghapus data terkait.
+  3. Menyimpan kembali data yang tersisa ke file.
 
 ---
 
 ## Menjalankan Aplikasi
 
-1. Instal Streamlit jika belum terinstal:
-   ```bash
-   pip install streamlit
-   ```
-2. Jalankan aplikasi dengan perintah:
-   ```bash
-   streamlit run app.py
-   ```
-3. Akses aplikasi melalui browser di alamat yang ditampilkan (biasanya `http://localhost:8501`).
+1. **Persiapan Lingkungan**:
+   - Pastikan Python telah terinstal di sistem Anda.
+   - Instal Streamlit dengan perintah:
+     ```bash
+     pip install streamlit
+     ```
+
+2. **Menjalankan Aplikasi**:
+   - Gunakan perintah berikut untuk menjalankan aplikasi:
+     ```bash
+     streamlit run app.py
+     ```
+   - Akses aplikasi melalui browser pada alamat yang ditampilkan (biasanya `http://localhost:8501`).
+
+3. **Penggunaan Aplikasi**:
+   - Navigasi melalui menu di sidebar untuk memilih fitur Tambah Kontak, Cari Kontak, atau Hapus Kontak.
+   - Ikuti petunjuk di layar untuk setiap fitur.
+
+---
+
 
